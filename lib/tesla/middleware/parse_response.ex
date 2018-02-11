@@ -12,13 +12,13 @@ defmodule Tesla.Middleware.ParseResponse do
   defp parse(res) do
     Logger.debug("RAW: #{inspect res}")
     case res.status do
-      200 -> parse_body(res.body)
-      _ -> res
+      200 -> {:ok, parse_body(res.body)}
+      _   -> {:error, res}
     end
   end
 
   defp parse_body("") do
-    :ok
+    %{"status" => "success"}
   end
   defp parse_body(body) do
     body
