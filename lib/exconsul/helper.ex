@@ -6,7 +6,7 @@ defmodule Exconsul.Helper do
     case config[:client] do
       nil ->
         Tesla.build_client [
-          {Tesla.Middleware.ParseResponse, []},
+          {Tesla.Middleware.ParseConsulResponse, []},
           {Tesla.Middleware.BaseUrl, "#{config.url}/v1/"},
           {Tesla.Middleware.JSON, decode_content_types: ["application/json"]},
           headers(config)

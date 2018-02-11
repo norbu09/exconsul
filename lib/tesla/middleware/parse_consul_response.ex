@@ -1,4 +1,4 @@
-defmodule Tesla.Middleware.ParseResponse do
+defmodule Tesla.Middleware.ParseConsulResponse do
 
   require Logger
 
